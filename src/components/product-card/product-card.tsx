@@ -1,10 +1,4 @@
-import {
-  Card,
-  CardContent,
-  CardMedia,
-  Rating,
-  Typography,
-} from "@mui/material";
+import { Card, CardBody, Rating, Typography } from "@material-tailwind/react";
 import { Product } from "../../clients";
 
 interface ProductCardProps {
@@ -13,26 +7,28 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   return (
-    <Card style={{ height: "320px", paddingTop: "2%" }}>
-      <CardMedia
-        style={{ height: "200px", paddingTop: "2%" }}
-        image={product.thumbnail}
-      />
-      <CardContent>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <Typography variant="subtitle1" style={{ height: 58 }}>
-            {product.name}
-          </Typography>
-          <Rating
-            name="read-only"
-            value={product.rating_summary / 20}
-            max={5}
-            precision={0.1}
-            readOnly
-          />
-          <div>{product.price}</div>
-        </div>
-      </CardContent>
+    <Card>
+      <CardBody className="flex flex-col">
+        <img
+          src={product.thumbnail}
+          className="h-[250px] object-fill mx-auto"
+        />
+        <Typography
+          as="div"
+          variant="h6"
+          // className="h-8 text-ellipsis overflow-hidden line-clamp-2"
+          // TODO: fix elipses on 1+lines
+          className="line-clamp-2"
+        >
+          {product.name}
+        </Typography>
+        <Rating
+          readonly
+          value={Math.round(product.rating_summary / 20) || 0}
+          className="my-1"
+        />
+        <Typography as="div" variant="h6">{`€${product.price}`}</Typography>
+      </CardBody>
     </Card>
   );
 }
