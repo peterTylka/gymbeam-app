@@ -4,7 +4,7 @@ export function getNewSearchParams(filtersValues: Record<string, string>) {
   const newSearchParamsObj = Object.assign({}, DEFAULT_SEARCH_PARAMS_OBJ);
   Object.entries(filtersValues).reduce(
     (result, [filterPropName, filterPropValue]) => {
-      if (filterPropValue != undefined) {
+      if (filterPropValue != null && filterPropValue != "") {
         // @ts-expect-error should be ok
         result[`${filterPropName}[]`] = filterPropValue;
       }
