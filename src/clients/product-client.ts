@@ -9,8 +9,8 @@ interface GetProductsResponse {
 }
 
 export const ProductClient = {
-  getProducts: (categoryId: number) =>
-    axios.get<GetProductsResponse>(`/api?category_ids[]=${categoryId}`, {
+  getProducts: (searchParams: URLSearchParams) =>
+    axios.get<GetProductsResponse>(`/api?${searchParams.toString()}`, {
       headers: {
         "Content-Type": "application/json",
       },

@@ -6,8 +6,6 @@ interface ProductListProps {
 }
 
 export function ProductList({ products }: ProductListProps) {
-  console.log({ products });
-
   return (
     <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
       {products?.map((product) => (

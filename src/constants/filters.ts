@@ -1,0 +1,7 @@
+export const SPORTS_NUTRITION_CATEGORY_NUMBER = "2416";
+export const DEFAULT_SEARCH_PARAMS_OBJ = {
+  "category_ids[]": SPORTS_NUTRITION_CATEGORY_NUMBER,
+};
+export const DEFAULT_SEARCH_PARAMS = new URLSearchParams(
+  DEFAULT_SEARCH_PARAMS_OBJ
+);
